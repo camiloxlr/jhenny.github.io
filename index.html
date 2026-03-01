@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mensagem de Amor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="center">
+      <span id="love-header" class="lead">Só pra dizer que estou ansioso pra te pedir em namoro, meu amor!</span>
+
+      <div class="image-wrapper" aria-label="Espaço para sua imagem">
+        <img id="user-image" src="image.png" alt="Sua imagem aqui" />
+      </div>
+    </main>
+
+    <script>
+      // Wrap words into a .word span and each character into a .key span
+      (function wrapHeader() {
+        const h = document.getElementById('love-header');
+        const text = (h.textContent || '').trim();
+        if (!text) return;
+        h.textContent = '';
+        const words = text.split(/\s+/);
+        words.forEach((word, idx) => {
+          const w = document.createElement('span');
+          w.className = 'word';
+          for (const ch of word) {
+            const s = document.createElement('span');
+            s.className = 'key';
+            s.textContent = ch;
+            w.appendChild(s);
+          }
+          h.appendChild(w);
+          if (idx !== words.length - 1) {
+            const spacer = document.createElement('span');
+            spacer.className = 'spacer';
+            spacer.innerHTML = '&nbsp;';
+            h.appendChild(spacer);
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
